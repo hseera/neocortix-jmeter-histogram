@@ -54,7 +54,7 @@ def generate_histogram():
     try:
         df = pd.read_csv(FILE) # read the file
         
-        plt.figure(figsize=(10,10))
+        plt.figure(figsize=(12,8))
         kwargs = dict(histtype='stepfilled', stacked=False, alpha=0.7, fill=True, bins=7000)
         plt.xlim(0,4000)
         plt.xlabel('Response Time (ms)')
@@ -69,6 +69,7 @@ def generate_histogram():
             plt.text(np.mean(df[col])*x_upper, max_ylim*y_upper, 'Mean: {:.3f}'.format(np.mean(df[col])))
             y_upper=y_upper + 0.05
             x_upper=x_upper+ 0.002
+        plt.savefig('histogram.jpg')
     except Exception as e:
         raise e
 
