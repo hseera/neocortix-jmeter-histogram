@@ -26,8 +26,12 @@ What things you need to execute the script
 ```
 1: Make sure above prerequisite are met first.
 2: Copy all the TestPlan_result_*.csv files generated from the Neocotrix test run and place them in the same folder as the script.
-3: Run the python script
+3: Replace the default value for TRANSACTION_NAME with the transaction name for which you want to generate histrogram.
+4: Run the python script
 ```
+
+### Enhancements
+1: Pass transaction name as parameter to the script
 
 ## Authors
 
