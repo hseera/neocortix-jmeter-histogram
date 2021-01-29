@@ -17,7 +17,7 @@ def extract_data():
     for file in os.listdir(LOCATION):
         try:
             if file.startswith("TestPlan_") and file.endswith(".csv"):
-                FILE_TO_WRITE = "result_"+os.path.basename(file)
+                FILE_TO_WRITE = "new_"+os.path.basename(file)
                 df = pd.read_csv(file)
                 x = []
                 x = df.loc[df['label'] == 'GetDistribution'] #filter out all the rows for which the label column does not contain value GetDistribution
@@ -29,14 +29,14 @@ def extract_data():
             raise e
 
 '''
-note glob.glob() is not case sensitive in Windows OS. 
-Make sure the files that needs to be merged have unique names from other file. 
+Note glob.glob() is not case sensitive in Windows OS. 
+Make sure the files that need to be merged have unique names from other file. 
 https://jdhao.github.io/2019/06/24/python_glob_case_sensitivity/
 '''
 
 def merge_files():
     try:    
-        files = glob.glob("./result_TestPlan_results_*.csv")
+        files = glob.glob("./new_TestPlan_results_*.csv") #extract_data function generates csv files that start with new_TestPlan_results
         dataframes = [pd.read_csv(p) for p in files]
         merged_dataframe = pd.concat(dataframes, axis=1)
         merged_dataframe.to_csv("./responsetime_histogram.csv", index=False)
