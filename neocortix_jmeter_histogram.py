@@ -11,6 +11,8 @@ This function filters out all the rows for which the label column does not match
 And saves "elapsed" value for rows that do match the specified label text(transaction name) into a csv.
 '''
 LOCATION = os.getcwd()
+TRANSACTION_NAME = 'GetDistribution'  #replace the transaction name with your transaction name
+
 def extract_data():
 
     FILE_TO_WRITE =""       
@@ -20,7 +22,7 @@ def extract_data():
                 FILE_TO_WRITE = "new_"+os.path.basename(file)
                 df = pd.read_csv(file)
                 x = []
-                x = df.loc[df['label'] == 'GetDistribution'] #filter out all the rows for which the label column does not contain value GetDistribution
+                x = df.loc[df['label'] == TRANSACTION_NAME] #filter out all the rows for which the label column does not contain value GetDistribution
                 with open(FILE_TO_WRITE,'w') as fwrite:
                     fwrite.write('elapsed_time_'+FILE_TO_WRITE+'\n')
                     for item in range(len(x)):
