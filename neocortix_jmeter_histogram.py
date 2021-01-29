@@ -54,19 +54,22 @@ def generate_histogram():
     try:
         df = pd.read_csv(FILE) # read the file
         
-        plt.figure(figsize=(12,8))
-        kwargs = dict(histtype='stepfilled', stacked=False, alpha=0.7, fill=True, bins=7000)
-        plt.xlim(0,4000)
+        #default histogram settings
+        plt.figure(figsize=(12,10))
+        kwargs = dict(histtype='step', stacked=False, alpha=0.7, fill=True, bins=7000)
+        plt.xlim(0,3000)
         plt.xlabel('Response Time (ms)')
         plt.ylabel('Total Count/Bin')
         
+        #using this values to display the mean value text
         y_upper=0.4
         x_upper=1
+        
         for col in df.columns:
             plt.hist(df[col],**kwargs)
             plt.axvline(np.mean(df[col]), color='r', linestyle='dashed', linewidth=0.5)
             min_ylim, max_ylim = plt.ylim()
-            plt.text(np.mean(df[col])*x_upper, max_ylim*y_upper, 'Mean: {:.3f}'.format(np.mean(df[col])))
+            plt.text(np.mean(df[col])*x_upper, max_ylim*y_upper, 'μ: {:.2f}'.format(np.mean(df[col])))
             y_upper=y_upper + 0.05
             x_upper=x_upper+ 0.002
         plt.savefig('histogram.jpg')
