@@ -7,10 +7,9 @@ import matplotlib.pyplot as plt
 import os
 
 '''
-This function filters out all the rows for which the label column does match a given value (i.e GetDistribution).
-And saves elapsed time value for rows that have specified label text into a csv.
+This function filters out all the rows for which the label column does not match a given value (i.e GetDistribution).
+And saves "elapsed" value for rows that do match the specified label text(transaction name) into a csv.
 '''
-
 LOCATION = os.getcwd()
 def extract_data():
 
