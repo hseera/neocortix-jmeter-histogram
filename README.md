@@ -6,7 +6,10 @@ This simple utility generates a Jmeter histogram for a given transaction name fo
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-Note: The script was test on Windows OS.
+Note: 
+1: The script was test on Windows OS.
+2: There are sample data files which you can run to understand how the script works.
+
 
 ### Prerequisites
 
