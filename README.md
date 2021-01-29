@@ -8,7 +8,7 @@ This simple utility generates a Jmeter histogram for a given transaction name fo
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 Note: 
 1: The script was test on Windows OS.
-2: There are sample data files which you can run to understand how the script works.
+2: There are sample data files (TestPlan_*.csv) which you can use to test & also understand how the script works.
 
 
 ### Prerequisites
@@ -25,7 +25,7 @@ What things you need to execute the script
 
 ```
 1: Make sure above prerequisite are met first.
-2: Copy all the TestPlan_result_*.csv files generated from the Neocotrix test run and place them in the same folder as this script.
+2: Copy all the TestPlan_result_*.csv files generated from the Neocotrix test run and place them in the same folder as the script.
 3: Run the python script
 ```
 
