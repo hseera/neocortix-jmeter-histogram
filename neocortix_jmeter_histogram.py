@@ -57,7 +57,7 @@ def generate_histogram():
         df = pd.read_csv(FILE) # read the file
         
         #default histogram settings
-        plt.figure(figsize=(12,10))
+        plt.figure(figsize=(12,8))
         kwargs = dict(histtype='step', stacked=False, alpha=0.7, fill=True, bins=7000)
         plt.xlim(0,3000)
         plt.xlabel('Response Time (ms)')
@@ -75,6 +75,7 @@ def generate_histogram():
             y_upper=y_upper + 0.05
             x_upper=x_upper+ 0.002
         plt.savefig('histogram.jpg')
+        plt.savefig('histogram.png')
     except Exception as e:
         raise e
 
