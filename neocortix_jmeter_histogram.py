@@ -61,7 +61,7 @@ def generate_histogram():
         kwargs = dict(histtype='step', stacked=False, alpha=0.7, fill=True, bins=7000)
         plt.xlim(0,3000)
         plt.xlabel('Response Time (ms)')
-        plt.ylabel('Total Count/Bin')
+        plt.ylabel('Frequency')
         
         #using this values to display the mean value text
         y_upper=0.4
