@@ -13,7 +13,7 @@ And saves "elapsed" value for rows that do match the specified label text(transa
 LOCATION = os.getcwd()
 TRANSACTION_NAME = 'GetDistribution'  #replace the transaction name with your transaction name
 
-def extract_data():
+def extract_latency_data():
 
     FILE_TO_WRITE =""       
     for file in os.listdir(LOCATION):
@@ -36,7 +36,7 @@ Make sure the files that need to be merged have unique names from other file.
 https://jdhao.github.io/2019/06/24/python_glob_case_sensitivity/
 '''
 
-def merge_files():
+def merge_latency_data():
     try:    
         files = glob.glob("./new_TestPlan_results_*.csv") #extract_data function generates csv files that start with new_TestPlan_results
         dataframes = [pd.read_csv(p) for p in files]
@@ -81,8 +81,8 @@ def generate_histogram():
         raise e
 
 def main():
-    extract_data()
-    merge_files()
+    extract_latency_data()
+    merge_latency_data()
     generate_histogram()
     
     
