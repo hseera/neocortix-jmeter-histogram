@@ -17,7 +17,7 @@ def extract_latency_data():
 
     FILE_TO_WRITE =""       
     for file in os.listdir(LOCATION):
-        try:
+        try: #extract latency data from csv files that begin with TestPlan_
             if file.startswith("TestPlan_") and file.endswith(".csv"):
                 FILE_TO_WRITE = "new_"+os.path.basename(file)
                 df = pd.read_csv(file)
@@ -27,6 +27,8 @@ def extract_latency_data():
                     fwrite.write('elapsed_time_'+FILE_TO_WRITE+'\n')
                     for item in range(len(x)):
                        fwrite.write('%s\n' %x['elapsed'].values[item])
+            else:
+                continue
         except Exception as e:
             raise e
 
