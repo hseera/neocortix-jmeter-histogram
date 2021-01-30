@@ -62,6 +62,8 @@ def generate_histogram():
         plt.xlim(0,3000)
         plt.xlabel('Response Time (ms)')
         plt.ylabel('Frequency')
+        plt.grid(axis="x", color="black", alpha=.8, linewidth=0.2, linestyle=":")
+        plt.grid(axis="y", color="black", alpha=.8, linewidth=0.2, linestyle=":")
         
         #using this values to display the mean value text
         y_upper=0.4
@@ -74,7 +76,6 @@ def generate_histogram():
             plt.text(np.mean(df[col])*x_upper, max_ylim*y_upper, 'μ: {:.2f}'.format(np.mean(df[col])))
             y_upper=y_upper + 0.05
             x_upper=x_upper+ 0.002
-        plt.savefig('histogram.jpg')
         plt.savefig('histogram.png')
     except Exception as e:
         raise e
