@@ -37,7 +37,6 @@ Note glob.glob() is not case sensitive in Windows OS.
 Make sure the files that need to be merged have unique names from other file. 
 https://jdhao.github.io/2019/06/24/python_glob_case_sensitivity/
 '''
-
 def merge_latency_data():
     try:    
         files = glob.glob("./new_TestPlan_results_*.csv") #extract_data function generates csv files that start with new_TestPlan_results
