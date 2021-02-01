@@ -50,6 +50,8 @@ def merge_latency_data():
 '''
 This function iterates through all the columns in the responsetime_histogram file
 and generate histogram for all of them. It also plots the average response time for all.
+
+Note: comment out the code that plots mean on the graph if not required.
 '''
 def generate_histogram():
     #for testing purpose use the file responsetime_histogram provided
@@ -59,19 +61,20 @@ def generate_histogram():
         
         #default histogram settings
         plt.figure(figsize=(12,8))
-        kwargs = dict(histtype='step', stacked=False, alpha=0.7, fill=True, bins=30000)
+        kwargs = dict(histtype='step', stacked=False, alpha=0.6, fill=True, bins=20000)
         plt.xlim(0,3000)
         plt.xlabel('Response Time (ms)')
         plt.ylabel('Frequency')
         plt.grid(axis="x", color="black", alpha=.8, linewidth=0.2, linestyle=":")
         plt.grid(axis="y", color="black", alpha=.8, linewidth=0.2, linestyle=":")
         
-        #using this values to display the mean value text
-        y_upper=0.4
-        x_upper=1
+        y_upper=0.1 # set the default y distance for the text for mean 
+        x_upper=1 # set the default x distance for the text for mean
         
         for col in df.columns:
             plt.hist(df[col],**kwargs)
+            '''Disable the below code if you don't want to display mean value for each chart. 
+            '''
             plt.axvline(np.mean(df[col]), color='r', linestyle='dashed', linewidth=0.5)
             min_ylim, max_ylim = plt.ylim()
             plt.text(np.mean(df[col])*x_upper, max_ylim*y_upper, 'μ: {:.2f}'.format(np.mean(df[col])))
