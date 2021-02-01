@@ -31,8 +31,10 @@ What things you need to execute the script
 ```
 
 ### Enhancements
+```
 1: Pass transaction name as parameter to the script.
 2: Make sure the mean text value doesn't overflow the chart.
+```
 
 ## Authors
 
