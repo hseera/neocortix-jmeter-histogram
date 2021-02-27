@@ -1,8 +1,15 @@
 ![index](https://github.com/hseera/neocortix-jmeter-histogram/blob/main/image/histogram.png)
 
 # Neocortix Jmeter Histogram
-This simple utility generates a Jmeter histogram for a given transaction name for the batch test executed on the Neocortix infrastructure. 
+![Language Python](https://img.shields.io/badge/%20Language-python-blue.svg) [![MIT License](http://img.shields.io/badge/License-MIT-blue.png)](LICENSE)
 
+[![GitHub Last Commits](https://img.shields.io/github/last-commit/hseera/python-utilities.svg)](https://github.com/hseera/python-utilities/commits/) [![GitHub Size](https://img.shields.io/github/repo-size/hseera/python-utilities.svg)](https://github.com/hseera/python-utilities/)
+[![Open GitHub Issue](https://img.shields.io/badge/Open-Incident-brightgreen.svg)](https://github.com/hseera/python-utilities/issues/new/choose)
+[![GitHub Open Issues](https://img.shields.io/github/issues/hseera/python-utilities?color=purple)](https://github.com/hseera/python-utilities/issues?q=is%3Aopen+is%3Aissue)
+[![GitHub Closed Issues](https://img.shields.io/github/issues-closed/hseera/python-utilities?color=purple)](https://github.com/hseera/python-utilities/issues?q=is%3Aclosed+is%3Aissue)
+
+This simple utility generates a Jmeter histogram for a given transaction name for the batch test executed on the Neocortix infrastructure. 
+---
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -36,11 +43,13 @@ What things you need to execute the script
 2: Make sure the mean text value doesn't overflow the chart.
 ```
 
-## Authors
+## Contribute
 
-* **Harinder Seera** - *Initial work* - [OzPerf](https://ozperf.com/)
+If you would like to contribute to this project, please reachout to me. Issues and pull requests are welcomed too.
 
-If you would like to contribute to this project, please reachout to me.
+## Author
+[<img id="github" src="./images/github.png" width="50" a="https://github.com/hseera/">](https://github.com/hseera/)    [<img src="./images/linkedin.png" style="max-width:100%;" >](https://www.linkedin.com/in/hpseera) [<img id="twitter" src="./images/twitter.png" width="50" a="twitter.com/HarinderSeera/">](https://twitter.com/@HarinderSeera) <a href="https://twitter.com/intent/follow?screen_name=harinderseera"> <img src="https://img.shields.io/twitter/follow/harinderseera.svg?label=Follow%20@harinderseera" alt="Follow @harinderseera" /> </a>          [![GitHub followers](https://img.shields.io/github/followers/hseera.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/hseera?tab=followers)
+
 
 ## License
 
