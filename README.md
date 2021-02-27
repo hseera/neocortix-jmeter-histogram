@@ -3,10 +3,10 @@
 # Neocortix Jmeter Histogram
 ![Language Python](https://img.shields.io/badge/%20Language-python-blue.svg) [![MIT License](http://img.shields.io/badge/License-MIT-blue.png)](LICENSE)
 
-[![GitHub Last Commits](https://img.shields.io/github/last-commit/hseera/python-utilities.svg)](https://github.com/hseera/python-utilities/commits/) [![GitHub Size](https://img.shields.io/github/repo-size/hseera/python-utilities.svg)](https://github.com/hseera/python-utilities/)
-[![Open GitHub Issue](https://img.shields.io/badge/Open-Incident-brightgreen.svg)](https://github.com/hseera/python-utilities/issues/new/choose)
-[![GitHub Open Issues](https://img.shields.io/github/issues/hseera/python-utilities?color=purple)](https://github.com/hseera/python-utilities/issues?q=is%3Aopen+is%3Aissue)
-[![GitHub Closed Issues](https://img.shields.io/github/issues-closed/hseera/python-utilities?color=purple)](https://github.com/hseera/python-utilities/issues?q=is%3Aclosed+is%3Aissue)
+[![GitHub Last Commits](https://img.shields.io/github/last-commit/hseera/neocortix-jmeter-histogram.svg)](https://github.com/hseera/neocortix-jmeter-histograms/commits/) [![GitHub Size](https://img.shields.io/github/repo-size/hseera/neocortix-jmeter-histogram.svg)](https://github.com/hseera/neocortix-jmeter-histogram/)
+[![Open GitHub Issue](https://img.shields.io/badge/Open-Incident-brightgreen.svg)](https://github.com/hseera/neocortix-jmeter-histogram/issues/new/choose)
+[![GitHub Open Issues](https://img.shields.io/github/issues/hseera/python-utilities?color=purple)](https://github.com/hseera/neocortix-jmeter-histogram/issues?q=is%3Aopen+is%3Aissue)
+[![GitHub Closed Issues](https://img.shields.io/github/issues-closed/hseera/python-utilities?color=purple)](https://github.com/hseera/neocortix-jmeter-histogram/issues?q=is%3Aclosed+is%3Aissue)
 
 This simple utility generates a Jmeter histogram for a given transaction name for the batch test executed on the Neocortix infrastructure. 
 ---
