@@ -30,7 +30,7 @@ What things you need to execute the script
 
 ```
 1: python 3.5
-2: numpy, panda & matlab packages
+2: numpy, panda, seaborn & matlab packages
 
 ```
 
