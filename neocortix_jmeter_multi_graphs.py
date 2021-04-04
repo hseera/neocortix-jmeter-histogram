@@ -111,9 +111,9 @@ def generate_graphs():
         ax = sns.scatterplot(ax=axes[1, 0], data=hist_df, s=15, legend=True)
         ax.set(ylim=(0,600))
         ax.legend(fontsize='medium')
-        ax.set_title('Response Code')
+        ax.set_title('Response Code Over Time')
         ax.set_xlabel('Test Duration')
-        ax.set_ylabel('Response Code Over Time')
+        ax.set_ylabel('Response Code')
         
         
         #generate response code distribution graph
