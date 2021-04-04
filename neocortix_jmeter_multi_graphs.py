@@ -165,7 +165,7 @@ def generate_graphs():
      
         fig.tight_layout(pad=3)  
 
-        plt.savefig('graphs.png')
+        plt.savefig('graphs.png',facecolor=fig.get_facecolor(), edgecolor='none')
     except Exception as e:
         raise e
 
