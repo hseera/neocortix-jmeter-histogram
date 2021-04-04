@@ -69,7 +69,7 @@ def generate_graphs():
     try:
         df = pd.read_csv(FILE) # read the file    
     
-        fig, axes = plt.subplots(2, 2, figsize=(12, 8), sharey=False) # set 2x2 plots
+        fig, axes = plt.subplots(3, 2, figsize=(14, 10), sharey=False) # set 2x2 plots
         
         plt.subplots_adjust(hspace = 0.3)
         
@@ -91,6 +91,18 @@ def generate_graphs():
         ax.set_ylabel('Frequency')
         #ax.legend(fontsize='medium')
         
+        summary = np.round(hist_df.describe(percentiles=[0.25,0.5,0.75,0.90,0.95],include='all'),2)# show basic statistics as in row
+        
+        axes[2, 0].axis("off")
+        table_result = axes[2, 0].table(cellText=summary.values,
+                  rowLabels=summary.index,
+                  colLabels=summary.columns,
+                  cellLoc = 'right', rowLoc = 'center',
+                  loc='center')
+        table_result.auto_set_font_size(False)
+        table_result.set_fontsize(9)
+        
+       
         
         #generate response code scatterplot
         hist_df = df.filter(regex='responsecode_')
@@ -121,7 +133,22 @@ def generate_graphs():
         ax.set_title('Response Code Distribution')
         ax.set_xlabel('Count')
         ax.set_ylabel('Response Code')
-                
+        
+        
+        axes[2, 1].axis("off")
+        
+        
+#        bar_df = bar_df.pivot(index='name', columns='response_code',values='count')
+#        axes[2, 1].axis("off")
+#        table_result = axes[2, 1].table(cellText=bar_df.values,
+#                  rowLabels=bar_df.index,
+#                  colLabels=bar_df.columns,
+#                  cellLoc = 'right', rowLoc = 'center',
+#                  loc='center')
+#        table_result.auto_set_font_size(False)
+#        table_result.set_fontsize(9)
+
+        
         fig.tight_layout()  
 
         plt.savefig('graphs.png')
