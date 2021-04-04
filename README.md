@@ -8,7 +8,13 @@
 [![GitHub Open Issues](https://img.shields.io/github/issues/hseera/python-utilities?color=purple)](https://github.com/hseera/neocortix-jmeter-histogram/issues?q=is%3Aopen+is%3Aissue)
 [![GitHub Closed Issues](https://img.shields.io/github/issues-closed/hseera/python-utilities?color=purple)](https://github.com/hseera/neocortix-jmeter-histogram/issues?q=is%3Aclosed+is%3Aissue)
 
-This simple utility generates a Jmeter histogram for a given transaction name for the batch test executed on the Neocortix infrastructure. 
+This simple utility generates a Jmeter histogram for a given transaction name for the batch test executed on the Neocortix infrastructure.
+
+A secondary script (neocortix_jmeter_multi_graphs.py) allows you to generate multiple graphs as shown below. 
+Note: This script is Work In Progress.
+
+![index](https://github.com/hseera/neocortix-jmeter-histogram/blob/main/images/graphs.png)
+
 ---
 ## Getting Started
 
