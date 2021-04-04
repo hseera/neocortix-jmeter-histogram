@@ -77,7 +77,7 @@ def generate_graphs():
         #generate scatterplot for elapsed time
         hist_df = df.filter(regex='latency_')
         ax = sns.scatterplot(ax=axes[0, 0], data=hist_df, s=2, legend=True)
-        ax.set(ylim=(0,3000))
+        ax.set(ylim=(0,4500))
         ax.legend(fontsize='medium')
         ax.set_title('Response Time Over Time')
         ax.set_xlabel('Test Duration')
@@ -86,7 +86,7 @@ def generate_graphs():
         #generate response time distribuiton graph
         kwargs = dict(element='step',shrink=.8, alpha=0.6, fill=True, legend=False) 
         ax = sns.histplot(ax=axes[0, 1], data=hist_df,**kwargs)
-        ax.set(xlim=(0,3000))
+        ax.set(xlim=(0,4500))
         ax.set_title('Response Time Distribution')
         ax.set_xlabel('Response Time (ms)')
         ax.set_ylabel('Frequency')
