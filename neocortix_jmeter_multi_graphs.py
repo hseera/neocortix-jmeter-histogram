@@ -90,12 +90,13 @@ def generate_graphs():
         ax.set_title('Response Time Distribution')
         ax.set_xlabel('Response Time (ms)')
         ax.set_ylabel('Frequency')
-        #ax.legend(fontsize='medium')
         
+        
+        #generate latency/response time basic statistics 
+        axes[1, 0].axis("off")
         summary = np.round(hist_df.describe(percentiles=[0.25,0.5,0.75,0.90,0.95],include='all'),2)# show basic statistics as in row
         
-        axes[2, 0].axis("off")
-        table_result = axes[2, 0].table(cellText=summary.values,
+        table_result = axes[1, 0].table(cellText=summary.values,
                   rowLabels=summary.index,
                   colLabels=summary.columns,
                   cellLoc = 'right', rowLoc = 'center',
@@ -104,11 +105,25 @@ def generate_graphs():
         table_result.set_fontsize(9)
         axes[2, 0].set_title('Response Time Statistics')
         
-       
+        #generate percentile distribution
+        summary = np.round(hist_df.describe(percentiles=[0.0, 0.1, 0.2,
+                                                         0.3, 0.4, 0.5,
+                                                         0.6, 0.7, 0.8,  
+                                                         0.9, 0.95, 0.99]),2) # add 1 in the percentile
+        dropping = ['count', 'mean', 'std', 'min','max'] #remove metrics not needed for percentile graph
         
+        for drop in dropping:
+            summary = summary.drop(drop)
+        
+        ax = sns.lineplot(ax=axes[1, 1],data=summary,dashes=False)
+        ax.legend(fontsize='medium')
+        ax.set_title('Percentile Distribution')
+        ax.set_xlabel('Percentile')
+        ax.set_ylabel('Response Time (ms)')
+
         #generate response code scatterplot
         hist_df = df.filter(regex='responsecode_')
-        ax = sns.scatterplot(ax=axes[1, 0], data=hist_df, s=15, legend=True)
+        ax = sns.scatterplot(ax=axes[2, 0], data=hist_df, s=15, legend=True)
         ax.set(ylim=(0,600))
         ax.legend(fontsize='medium')
         ax.set_title('Response Code Over Time')
@@ -128,16 +143,14 @@ def generate_graphs():
         grouped_df = bar_df.groupby(['name', 'response_code']).agg({'count': 'sum'})
         percents_df= np.round(grouped_df.groupby('name').apply(lambda x: 100 * x / float(x.sum())),2).reset_index()
         
-        #ax = sns.barplot(ax=axes[1, 1],data=bar_df,x='response_code', y='count', hue='name' )
-        ax = sns.barplot(ax=axes[1, 1],data=percents_df,x='count', y='response_code', hue='name', orient = 'h' )
+        ax = sns.barplot(ax=axes[2, 1],data=percents_df,x='count', y='response_code', hue='name', orient = 'h' )
         ax.legend_.remove()
         #ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.,fontsize='medium')
         ax.set_title('Response Code - % Distribution')
         ax.set_xlabel('% Distribution')
         ax.set_ylabel('Response Code')
         
-        
-        axes[2, 1].axis("off")
+
 #        table_result = axes[2, 1].table(cellText=bar_df.values,
 #                  rowLabels=bar_df.index,
 #                  colLabels=bar_df.columns,
@@ -146,8 +159,7 @@ def generate_graphs():
 #        table_result.auto_set_font_size(False)
 #        table_result.set_fontsize(9)
 #        axes[2, 1].set_title('Response Code Breakdown')
-
-        
+     
         fig.tight_layout()  
 
         plt.savefig('graphs.png')
