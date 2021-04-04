@@ -33,7 +33,7 @@ def extract_latency_data():
                 x = []
                 x = df.loc[df['label'] == TRANSACTION_NAME] #filter out all the rows for which the label column does not contain value GetDistribution
                 with open(FILE_TO_WRITE,'w') as fwrite:
-                    fwrite.write('elapsed_'+substring+',responsecode_'+substring+'\n')
+                    fwrite.write('latency_'+substring+',responsecode_'+substring+'\n')
                     for item in range(len(x)):
                        fwrite.write('%s,%s\n' %(x['elapsed'].values[item],x['responseCode'].values[item]))
             else:
@@ -74,7 +74,7 @@ def generate_graphs():
         plt.subplots_adjust(hspace = 0.3)
         
         #generate scatterplot for elapsed time
-        hist_df = df.filter(regex='elapsed_')
+        hist_df = df.filter(regex='latency_')
         ax = sns.scatterplot(ax=axes[0, 0], data=hist_df, s=2, legend=True)
         ax.set(ylim=(0,3000))
         ax.legend(fontsize='medium')
@@ -101,6 +101,7 @@ def generate_graphs():
                   loc='center')
         table_result.auto_set_font_size(False)
         table_result.set_fontsize(9)
+        axes[2, 0].set_title('Response Time Statistics')
         
        
         
@@ -115,7 +116,6 @@ def generate_graphs():
         
         
         #generate response code distribution graph
-        hist_df = df.filter(regex='responsecode_')
         bar_df = pd.DataFrame(columns=['name', 'response_code', 'count'])
                 
         for col in hist_df.columns:
@@ -136,10 +136,6 @@ def generate_graphs():
         
         
         axes[2, 1].axis("off")
-        
-        
-#        bar_df = bar_df.pivot(index='name', columns='response_code',values='count')
-#        axes[2, 1].axis("off")
 #        table_result = axes[2, 1].table(cellText=bar_df.values,
 #                  rowLabels=bar_df.index,
 #                  colLabels=bar_df.columns,
@@ -147,6 +143,7 @@ def generate_graphs():
 #                  loc='center')
 #        table_result.auto_set_font_size(False)
 #        table_result.set_fontsize(9)
+#        axes[2, 1].set_title('Response Code Breakdown')
 
         
         fig.tight_layout()  
