@@ -109,7 +109,7 @@ def generate_graphs():
         summary = np.round(hist_df.describe(percentiles=[0.0, 0.1, 0.2,
                                                          0.3, 0.4, 0.5,
                                                          0.6, 0.7, 0.8,  
-                                                         0.9, 0.95, 0.99]),2) # add 1 in the percentile
+                                                         0.9, 0.95, 0.99, 1]),2) # add 1 in the percentile
         dropping = ['count', 'mean', 'std', 'min','max'] #remove metrics not needed for percentile graph
         
         for drop in dropping:
@@ -117,6 +117,7 @@ def generate_graphs():
         
         ax = sns.lineplot(ax=axes[1, 1],data=summary,dashes=False)
         ax.legend(fontsize='medium')
+        ax.set(ylim=(0,6000))
         ax.set_title('Percentile Distribution')
         ax.set_xlabel('Percentile')
         ax.set_ylabel('Response Time (ms)')
