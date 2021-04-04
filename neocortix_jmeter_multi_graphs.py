@@ -80,7 +80,7 @@ def generate_graphs():
         ax.set(ylim=(0,4500))
         ax.legend(fontsize='medium')
         ax.set_title('Response Time Over Time')
-        ax.set_xlabel('Test Duration')
+        ax.set_xlabel('Test Duration (sec)')
         ax.set_ylabel('Response Time (ms)')
         
         #generate response time distribuiton graph
@@ -112,7 +112,7 @@ def generate_graphs():
         ax.set(ylim=(0,600))
         ax.legend(fontsize='medium')
         ax.set_title('Response Code Over Time')
-        ax.set_xlabel('Test Duration')
+        ax.set_xlabel('Test Duration (sec)')
         ax.set_ylabel('Response Code')
         
         
