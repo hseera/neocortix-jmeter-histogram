@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 '''
 TODO:
-Modify the code to display test duration for the scatterplot rather than the count of data points plot. 
+Modify the code to display correct test duration for the scatterplot. Instead of the data points, use the timestamp for test duration. 
 '''
 
 import pandas as pd
