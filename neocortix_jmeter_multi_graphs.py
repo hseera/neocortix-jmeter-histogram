@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import os
 import re
 from collections import Counter
+import numpy as np
 
 import seaborn as sns
 
@@ -78,7 +79,7 @@ def generate_graphs():
         ax = sns.scatterplot(ax=axes[0, 0], data=hist_df, s=2, legend=True)
         ax.set(ylim=(0,3000))
         ax.legend(fontsize='medium')
-        ax.set_title('Response Time')
+        ax.set_title('Response Time Over Time')
         ax.set_xlabel('Test Duration')
         ax.set_ylabel('Response Time (ms)')
         
@@ -107,12 +108,12 @@ def generate_graphs():
         
         #generate response code scatterplot
         hist_df = df.filter(regex='responsecode_')
-        ax = sns.scatterplot(ax=axes[1, 0], data=hist_df, s=8, legend=True)
+        ax = sns.scatterplot(ax=axes[1, 0], data=hist_df, s=15, legend=True)
         ax.set(ylim=(0,600))
         ax.legend(fontsize='medium')
         ax.set_title('Response Code')
         ax.set_xlabel('Test Duration')
-        ax.set_ylabel('Response Code')
+        ax.set_ylabel('Response Code Over Time')
         
         
         #generate response code distribution graph
@@ -124,14 +125,15 @@ def generate_graphs():
                 data = {'name':col, 'response_code':key, 'count':value}
                 bar_df = bar_df.append(data, ignore_index=True)
 
-        #grouped_df = bar_df.groupby(['name', 'response_code']).agg({'count': 'sum'})
-        #percents_df = grouped_df.groupby('name',as_index=False).apply(lambda x: 100 * x / float(x.sum()))
+        grouped_df = bar_df.groupby(['name', 'response_code']).agg({'count': 'sum'})
+        percents_df= np.round(grouped_df.groupby('name').apply(lambda x: 100 * x / float(x.sum())),2).reset_index()
+        
         #ax = sns.barplot(ax=axes[1, 1],data=bar_df,x='response_code', y='count', hue='name' )
-        ax = sns.barplot(ax=axes[1, 1],data=bar_df,x='count', y='response_code', hue='name', orient = 'h' )
+        ax = sns.barplot(ax=axes[1, 1],data=percents_df,x='count', y='response_code', hue='name', orient = 'h' )
         ax.legend_.remove()
         #ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.,fontsize='medium')
-        ax.set_title('Response Code Distribution')
-        ax.set_xlabel('Count')
+        ax.set_title('Response Code - % Distribution')
+        ax.set_xlabel('% Distribution')
         ax.set_ylabel('Response Code')
         
         
