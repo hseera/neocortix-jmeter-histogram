@@ -59,7 +59,7 @@ def generate_graphs():
         ax.set_xticklabels([pd.to_datetime(tm, unit='ms').strftime('%H:%M:%S') for tm in xticks]) #, rotation = 45
         ax.legend(fontsize='medium')
         ax.set_title('Response Time Over Time')
-        ax.set_xlabel('Test Duration (sec)')
+        ax.set_xlabel('Time')
         ax.set_ylabel('Response Time (ms)')
         
         
@@ -108,7 +108,7 @@ def generate_graphs():
         ax.set_title('Response Code Over Time')
         xticks = ax.get_xticks()
         ax.set_xticklabels([pd.to_datetime(tm, unit='ms').strftime('%H:%M:%S') for tm in xticks]) #, rotation = 45
-        ax.set_xlabel('Test Duration (sec)')
+        ax.set_xlabel('Time')
         ax.set_ylabel('Response Code')
         
         #generate response code % distribution barplot
