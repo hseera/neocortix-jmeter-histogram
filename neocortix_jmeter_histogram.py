@@ -11,7 +11,7 @@ This function filters out all the rows for which the label column does not match
 And saves "elapsed" value for rows that do match the specified label text(transaction name) into a csv.
 '''
 LOCATION = os.getcwd()
-TRANSACTION_NAME = 'GetDistribution'  #replace the transaction name with your transaction name
+TRANSACTION_NAME = 'HTTP Request'  #replace the transaction name with your transaction name
 
 def extract_latency_data():
 
@@ -61,7 +61,7 @@ def generate_histogram():
         
         #default histogram settings
         plt.figure(figsize=(12,8))
-        kwargs = dict(histtype='step', stacked=False, alpha=0.6, fill=True, bins=20000)
+        kwargs = dict(histtype='step', stacked=False, alpha=0.6, fill=True, bins=2000)
         plt.xlim(0,3000)
         plt.xlabel('Response Time (ms)')
         plt.ylabel('Frequency')
@@ -78,7 +78,7 @@ def generate_histogram():
             plt.axvline(np.mean(df[col]), color='r', linestyle='dashed', linewidth=0.5)
             min_ylim, max_ylim = plt.ylim()
             plt.text(np.mean(df[col])*x_upper, max_ylim*y_upper, 'μ: {:.2f}'.format(np.mean(df[col])))
-            y_upper=y_upper + 0.05
+            y_upper=y_upper + 0.04
             x_upper=x_upper+ 0.002
         plt.savefig('histogram.png')
     except Exception as e:
