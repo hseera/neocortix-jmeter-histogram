@@ -10,10 +10,13 @@
 
 This simple utility generates a Jmeter histogram for a given transaction name for the batch test executed on the Neocortix infrastructure.
 
-A secondary script (neocortix_jmeter_multi_graphs.py) allows you to generate multiple graphs as shown below. 
+A secondary script (neocortix_jmeter_multi_graphs_by_region.py) allows you to generate multiple graphs as shown below. 
 Note: This script is Work In Progress.
 
 ![index](https://github.com/hseera/neocortix-jmeter-histogram/blob/main/images/graphs.png)
+
+A seperate script (neocortix_locust.py) to generate graphs for locust test run. This script is in WIP stage.
+![index](https://github.com/hseera/neocortix-jmeter-histogram/blob/main/images/locust-graphs.png)
 
 ---
 ## Getting Started
