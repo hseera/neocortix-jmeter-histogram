@@ -23,7 +23,6 @@ def extract_data():
 
     FILE_TO_WRITE ="./merged.csv"
     lookup_df = pd.read_csv('./mapConfig.csv')
-
      
     if os.path.exists(FILE_TO_WRITE):
         os.remove(FILE_TO_WRITE)
@@ -35,7 +34,6 @@ def extract_data():
                 substring = re.search('TestPlan_results_(.+?).csv', file).group(1)
                 y = lookup_df.loc[lookup_df[' Filename'].str.contains(substring)][' Region']
                 y = y.values.tolist()
-                #print(y[0].lstrip())
                 df = pd.read_csv(file)
                 x = []
                 x = df.loc[df['label'] == TRANSACTION_NAME] #filter out all the rows for which the label column does not contain value GetDistribution
@@ -57,9 +55,8 @@ def generate_graphs():
                 
         res = df.pivot(columns='location', values='latency')
         
-        fig, axes = plt.subplots(3, 2, figsize=(14, 10), sharey=False) # set 2x2 plots
+        fig, axes = plt.subplots(3, 2, figsize=(14, 10), sharey=False)
         
-        # fig.patch.set_facecolor('xkcd:mint green')
         fig.patch.set_facecolor('#bbe5f9')
         plt.subplots_adjust(hspace = 0.3)
         color = {' USA':'#0000FF',' Russia':'#FF0000',' Other':'#00FF00' }
@@ -73,8 +70,7 @@ def generate_graphs():
         ax.set_title('Response Time Over Time')
         ax.set_xlabel('Time')
         ax.set_ylabel('Response Time (ms)')
-        
-        
+               
         #generate response time distribuiton graph
         kwargs = dict(element='step',shrink=.8, alpha=0.3, fill=True, legend=True, palette=color) 
         ax = sns.histplot(ax=axes[0, 1], data=res,**kwargs)
@@ -83,8 +79,7 @@ def generate_graphs():
         ax.legend([' USA',' Russia', ' Other']).set_title('')
         ax.set_xlabel('Response Time (ms)')
         ax.set_ylabel('Frequency')
-        
-        
+               
         #generate latency/response time basic statistics 
         axes[1, 0].axis("off")
         
@@ -93,10 +88,10 @@ def generate_graphs():
                   rowLabels=summary.index,
                   colLabels=summary.columns,
                   cellLoc = 'right', rowLoc = 'center',
-                  loc='center')
+                  loc='upper left')
         table_result.auto_set_font_size(False)
         table_result.set_fontsize(9)
-        #axes[1, 0].set_title('Response Time Statistics')
+        axes[1, 0].set_title('Response Time Statistics')
         
         #generate percentile distribution       
         summary = np.round(res.describe(percentiles=[0.0, 0.1, 0.2,
@@ -114,7 +109,7 @@ def generate_graphs():
         ax.set_xlabel('Percentile')
         ax.set_ylabel('Response Time (ms)')
 
-        #generate response code scatterplot ,palette="deep",style=df['location']
+        #generate response code scatterplot
         ax = sns.scatterplot(ax=axes[2, 0], data=df,x=df['timestamp'],y=df['responsecode'], hue=df['location'], palette=color, s=10, legend=True)
         ax.set(ylim=(0,600))
         ax.legend(fontsize='medium')
@@ -130,7 +125,6 @@ def generate_graphs():
         res_code = res_code.unstack(level=0)
         percents_df= np.round(res_code.groupby('location').apply(lambda x: 100 * x / x.sum()),2).reset_index()     
         ax = sns.barplot(ax=axes[2, 1],data=percents_df,x=0, y='responsecode', hue='location',palette=color, orient = 'h')
-        #ax.legend_.remove()
         ax.legend().set_title('')
         ax.set_title('Response Code - % Distribution')
         ax.set_xlabel('% Distribution')
@@ -138,7 +132,7 @@ def generate_graphs():
              
         fig.tight_layout(pad=2)  
 
-        plt.savefig('graphs.png',facecolor=fig.get_facecolor(), edgecolor='none')
+        plt.savefig('./graphs.png',facecolor=fig.get_facecolor(), edgecolor='none')
     except Exception as e:
         raise e  
 
