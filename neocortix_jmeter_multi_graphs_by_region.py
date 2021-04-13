@@ -32,16 +32,16 @@ def extract_data():
         try: #extract data from csv files that begin with TestPlan_
             if file.startswith("TestPlan_") and file.endswith(".csv"):
                 substring = re.search('TestPlan_results_(.+?).csv', file).group(1)
-                y = lookup_df.loc[lookup_df[' Filename'].str.contains(substring)][' Region']
-                y = y.values.tolist()
-                df = pd.read_csv(file)
-                x = []
-                x = df.loc[df['label'] == TRANSACTION_NAME] #filter out all the rows for which the label column does not contain value GetDistribution
-                for item in range(len(x)):
-                    truncatedResponseCode = x['responseCode'].values[item]
+                region_name = lookup_df.loc[lookup_df[' Filename'].str.contains(substring)][' Region']
+                region_name = region_name.values.tolist()
+                data_df = pd.read_csv(file)
+                extracted_data_list = []
+                extracted_data_list = data_df.loc[data_df['label'] == TRANSACTION_NAME] #filter out all the rows for which the label column does not contain value GetDistribution
+                for item in range(len(extracted_data_list)):
+                    truncatedResponseCode = extracted_data_list['responseCode'].values[item]
                     if isinstance(truncatedResponseCode, str):
                         truncatedResponseCode = 599
-                    fwrite.write('%s,%s,%s,%s\n' %(x['timeStamp'].values[item],y[0],x['elapsed'].values[item],truncatedResponseCode))
+                    fwrite.write('%s,%s,%s,%s\n' %(extracted_data_list['timeStamp'].values[item],region_name[0],extracted_data_list['elapsed'].values[item],truncatedResponseCode))
             else:
                 continue
         except Exception as e:
