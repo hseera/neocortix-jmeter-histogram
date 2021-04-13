@@ -1,0 +1,4 @@
+"Method","Name","# requests","# failures","Median response time","Average response time","Min response time","Max response time","Average Content Size","Requests/s"
+"GET","/",7011,0,130,148,85,1564,45,13.00
+"GET","/favicon.ico",7006,0,130,138,88,630,6248,12.99
+"None","Aggregated",14017,0,130,143,85,1564,3145,26.00
