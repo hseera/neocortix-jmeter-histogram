@@ -55,6 +55,7 @@ def generate_graphs():
                 
         res = df.pivot(columns='location', values='latency')
         
+        #base plot setting
         fig, axes = plt.subplots(3, 2, figsize=(14, 10), sharey=False)
         
         fig.patch.set_facecolor('#bbe5f9')
