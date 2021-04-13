@@ -15,7 +15,8 @@ Note: This script is Work In Progress.
 
 ![index](https://github.com/hseera/neocortix-jmeter-histogram/blob/main/images/graphs.png)
 
-A seperate script (neocortix_locust.py) to generate graphs for locust test run. This script is in WIP stage.
+
+Also there is a separate script (neocortix_locust.py) to generate graphs for locust batch test run. This script is in WIP stage.
 ![index](https://github.com/hseera/neocortix-jmeter-histogram/blob/main/images/locust-graphs.png)
 
 ---
